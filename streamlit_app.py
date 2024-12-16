@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 import google.generativeai as genai
 
@@ -44,7 +45,7 @@ else:
 
     # Create a chat input field to allow the user to enter a message. This will display
     # automatically at the bottom of the page.
-    if prompt := st.chat_input("What is up?"):
+    if prompt := st.chat_input("Your message here..."):
 
         # Store and display the current prompt.
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -73,8 +74,29 @@ else:
             stream=True,
         )
 
+        # Display assistant response in chat message container
+        with st.chat_message(
+            name='model',
+        ):
+            message_placeholder = st.empty()
+            full_response = ''
+            assistant_response = response
+            # Streams in a chunk at a time
+            for chunk in response:
+                # Simulate stream of chunk
+                # TODO: Chunk missing `text` if API stops mid-stream ("safety"?)
+                for ch in chunk.text.split(' '):
+                    full_response += ch + ' '
+                    time.sleep(0.05)
+                    # Rewrites with a cursor at end
+                    message_placeholder.write(full_response + '▌')
+            # Write full message with placeholder
+            message_placeholder.write(full_response)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+
+
         # Stream the response to the chat using `st.write_stream`, then store it in 
         # session state.
-        with st.chat_message("assistant"):
-            response = st.write_stream(response)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+        #with st.chat_message("assistant"):
+        #    response = st.write_stream(response)
+        #st.session_state.messages.append({"role": "assistant", "content": response})
