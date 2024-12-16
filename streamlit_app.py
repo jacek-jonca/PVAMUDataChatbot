@@ -16,7 +16,7 @@ instruction = ("You are a data scientist and a superb communicator. "
                )
 
 # Show title and description.
-st.title("PV's Research Admin Data Chatbot 💬")
+st.title("PV Grant Support Data Chatbot 💬")
 st.write(
     "This is a simple chatbot that uses Google Gemini AI 2 Flas Experimental model to generate responses. "
     "During dev phase in order to use this app, you need to provide an GeminiAI API key."
