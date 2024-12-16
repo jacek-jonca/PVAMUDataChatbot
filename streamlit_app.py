@@ -62,7 +62,7 @@ else:
         #print(chat.history)
 
         response = chat.send_message(
-            messages=[
+            [
                 {"role": m["role"], "content": m["content"]}
                 for m in st.session_state.messages
             ],
