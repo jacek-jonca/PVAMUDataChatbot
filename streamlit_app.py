@@ -11,7 +11,7 @@ instruction = ("You are a data scientist and a superb communicator. "
                "Put an effort into your work, take your time, and do an excellent job. "
                "I will tip you $500."
                "[JSON DATA STARTS]" + 
-               jsonData
+               str(jsonData)
                )
 
 # Show title and description.
