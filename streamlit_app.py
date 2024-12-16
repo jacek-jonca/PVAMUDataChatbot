@@ -77,8 +77,8 @@ else:
 
         # Display assistant response in chat message container
         with st.chat_message(
-            name='model',
-            avatar="🤖",
+            name='ai',
+#            avatar="🤖",
         ):
             message_placeholder = st.empty()
             full_response = ''
