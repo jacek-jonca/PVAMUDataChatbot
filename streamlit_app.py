@@ -25,7 +25,7 @@ st.write(
 # Ask user for their geminai API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
-geminai_api_key = st.text_input("geminai API Key", type="password")
+geminai_api_key = st.secrets["geminai_api_key"]
 if not geminai_api_key:
     st.info("Please add your Gemini AI API key to continue.", icon="🗝️")
 else:
@@ -67,7 +67,8 @@ else:
 
         response = chat.send_message(
             [
-                m["content"] for m in st.session_state.messages
+                 prompt
+#                m["content"] for m in st.session_state.messages
 #                {"role": m["role"], "content": m["content"]}
 #                for m in st.session_state.messages
             ],
