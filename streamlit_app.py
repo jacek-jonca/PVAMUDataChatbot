@@ -1,3 +1,4 @@
+import os
 import time
 import streamlit as st
 import google.generativeai as genai
@@ -14,6 +15,7 @@ instruction = ("You are a data scientist and a superb communicator. "
                "[JSON DATA STARTS]" + 
                str(jsonData)
                )
+os.environ['GEMINI_API_KEY'] = st.secrets['GEMINI_API_KEY']
 
 # Show title and description.
 st.title("PV Grant Support Data Chatbot 💬")
@@ -25,11 +27,11 @@ st.write(
 # Ask user for their geminai API key via `st.text_input`.
 # Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
 # via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
-geminai_api_key = st.text_input("geminai API Key", type="password")
-if not geminai_api_key:
+#geminai_api_key = st.text_input("geminai API Key", type="password")
+if not os.environ['GEMINI_API_KEY']:
     st.info("Please add your Gemini AI API key to continue.", icon="🗝️")
 else:
-    genai.configure(api_key=geminai_api_key)
+    genai.configure(api_key=os.environ['GEMINI_API_KEY'])
     # Create an Gemini AI client.
     model = genai.GenerativeModel(modelUsed, system_instruction=instruction)
 
