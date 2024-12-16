@@ -92,7 +92,7 @@ else:
                     message_placeholder.write(full_response + '▌')
             # Write full message with placeholder
             message_placeholder.write(full_response)
-            st.session_state.messages.append({"role": "assistant", "content": response})
+            #st.session_state.messages.append({"role": "assistant", "content": response})
 
 
         # Stream the response to the chat using `st.write_stream`, then store it in 
