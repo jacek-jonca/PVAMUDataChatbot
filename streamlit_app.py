@@ -19,8 +19,8 @@ os.environ['GEMINI_API_KEY'] = st.secrets['keys']['GEMINI_API_KEY']
 # Show title and description.
 st.title("PV Grant Support Data Chatbot 💬")
 st.write(
-    "This is a simple chatbot that uses Google Gemini AI 2 Flas Experimental model to generate responses. "
-    "During dev phase in order to use this app, you need to provide an GeminiAI API key."
+    "This is a simple chatbot that uses Google Gemini AI 2.0 Flash Experimental model to"
+    "investigate grangt support staffing data."
 )
 
 # Ask user for their geminai API key via `st.text_input`.
