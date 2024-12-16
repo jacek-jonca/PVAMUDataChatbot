@@ -15,8 +15,7 @@ instruction = ("You are a data scientist and a superb communicator. "
                "[JSON DATA STARTS]" + 
                str(jsonData)
                )
-os.environ['GEMINI_API_KEY'] = st.secrets['GEMINI_API_KEY']
-
+os.environ['GEMINI_API_KEY'] = st.secrets['keys']['GEMINI_API_KEY']
 # Show title and description.
 st.title("PV Grant Support Data Chatbot 💬")
 st.write(
